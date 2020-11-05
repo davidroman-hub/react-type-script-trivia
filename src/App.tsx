@@ -9,7 +9,7 @@ import { QuestionState,Difficulty} from './API'
 
 const TOTAL_QUESTIONS = 10
 
-type AnswerObject = {
+export type AnswerObject = {
   question: string,
   answer:string,
   correct:boolean,
@@ -22,7 +22,7 @@ const App = () => {
 // to specify we gonna use QuestionState remember is a array of springs =>
   const [questions, setQuestions] = useState <QuestionState[]>([]);
   const [number, setNumber] = useState(0);
-  const [useAnswers, setUserAnswers] = useState <AnswerObject[]>([]);
+  const [userAnswers, setUserAnswers] = useState <AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameover] = useState(true);
 
@@ -80,7 +80,7 @@ const App = () => {
   return(
     <div className='App'>
       <h1>React Quiz</h1>
-      {gameOver || useAnswers.length === TOTAL_QUESTIONS ? (
+      {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
           <button className='start' onClick={startTrivia}>
           Start
         </button>
@@ -95,13 +95,13 @@ const App = () => {
         totalQuestion= {TOTAL_QUESTIONS}
         question={questions[number].question}
         answers={questions[number].answers}
-        userAnswer={useAnswers ? useAnswers[number]: undefined}
+        userAnswer={userAnswers ? userAnswers[number]: undefined}
         callback={checkAnswer}
 
       />}
       { !gameOver &&
         !loading && 
-        useAnswers.length === number + 1 &&
+        userAnswers.length === number + 1 &&
         number !== TOTAL_QUESTIONS -1 ? (
           <button className='next'  onClick={ nextQuestion}>
           Next Question

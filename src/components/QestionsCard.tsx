@@ -1,10 +1,16 @@
 import React from 'react'
 
+//types
+import {AnswerObject} from '../App';
+
+
+
 type PropsQuiz = {
     question:string;
     answers:string[];
-    callback: any;
-    userAnswer:any;
+    // callback: any;
+    callback:(e: React.MouseEvent<HTMLButtonElement>) => void;
+    userAnswer:AnswerObject | undefined;
     questionNr:number;
     totalQuestion:number
 }
@@ -28,7 +34,8 @@ const QestionsCard: React.FC<PropsQuiz> = ({
             <div>
                 {answers.map(answer => (
                     <div key={answer}>
-                        <button disabled={userAnswer} value={answer} onClick={callback}>
+                                {/* //=> to convert on boulean  = '  !!  ' */}
+                        <button disabled={!!userAnswer} value={answer} onClick={callback}>
                             <span dangerouslySetInnerHTML={{__html:answer}}/>
                         </button>
                     </div>
