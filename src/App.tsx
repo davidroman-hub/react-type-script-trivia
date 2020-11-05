@@ -58,13 +58,17 @@ const App = () => {
   return(
     <div className='App'>
       <h1>React Quiz</h1>
-      <button className='start' onClick={startTrivia}>
-        Start
-      </button>
-      <p className='score'> Score:</p>
-      <p>Loading Questions..</p>
+      {gameOver || useAnswers.length === TOTAL_QUESTIONS ? (
+          <button className='start' onClick={startTrivia}>
+          Start
+        </button>
+      ): null}
+      
+      {!gameOver ? <p className='score'> Score:</p> : null}
+      {loading && <p>Loading Questions..</p>}
       {/* //in any case you dont put the props this will dont will work, you need to put all props */}
-      {/* <QuestionCard
+      {!loading && !gameOver && <QuestionCard
+        
         questionNr={number + 1}
         totalQuestion= {TOTAL_QUESTIONS}
         question={questions[number].question}
@@ -72,10 +76,15 @@ const App = () => {
         userAnswer={useAnswers ? useAnswers[number]: undefined}
         callback={checkAnswer}
 
-      /> */}
-      <button className='next' onClick={ nextQuestion}>
-        Next Question
-      </button>
+      />}
+      { !gameOver &&
+        !loading && 
+        useAnswers.length === number + 1 &&
+        number !== TOTAL_QUESTIONS -1 ? (
+          <button className='next' onClick={ nextQuestion}>
+          Next Question
+        </button>
+      ): null}
     </div>
   )
 }
