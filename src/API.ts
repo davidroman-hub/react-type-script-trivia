@@ -15,6 +15,11 @@ export type Question = {
 
 export type QuestionState = Question & { answers : string[]}
 
+// to change dinamyc the answer difficulty 
+// you can do the same with amount
+
+
+
 export enum Difficulty {
     EASY = 'easy',
     MEDIUM ='medium',

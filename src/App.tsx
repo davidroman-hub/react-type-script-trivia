@@ -3,16 +3,26 @@ import {fetchQuizQuestions} from './API';
 // components
 import QuestionCard from './components/QestionsCard';
 //TYPES
-import {Difficulty} from './API'
+import { QuestionState,Difficulty} from './API'
+
+
 
 const TOTAL_QUESTIONS = 10
 
-const App =() => {
+type AnswerObject = {
+  question: string,
+  answer:string,
+  correct:boolean,
+  correctAnswer:string
+}
+
+const App = () => {
   
   const [loading, setLoading] = useState(false);
-  const [questions, setQuestions] = useState([]);
+// to specify we gonna use QuestionState remember is a array of springs =>
+  const [questions, setQuestions] = useState <QuestionState[]>([]);
   const [number, setNumber] = useState(0);
-  const [useAnswers, setUserAnswers] = useState([]);
+  const [useAnswers, setUserAnswers] = useState <AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameover] = useState(true);
 
