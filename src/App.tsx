@@ -27,11 +27,24 @@ const App = () => {
   const [gameOver, setGameover] = useState(true);
 
   // to consoling the response from API.ts
-  console.log(fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY))
-
+  // console.log(fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY))
+  console.log(questions)
 
   const startTrivia = async () => {
-//
+    setLoading(true);
+    setGameover(false);
+
+    const newQuestions = await fetchQuizQuestions(
+      TOTAL_QUESTIONS,
+      Difficulty.EASY
+    )
+
+    setQuestions(newQuestions);
+    // you can use try catch
+    setScore(0);
+    setUserAnswers([]);
+    setNumber(0);
+    setLoading(false)
   }
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
