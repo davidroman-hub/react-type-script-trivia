@@ -14,7 +14,7 @@ export const GlobalStyles = createGlobalStyle`
         padding: 0 20px;
         display:flex;
         justify-content:center;
-        color:#fff
+        
 
     }
 
