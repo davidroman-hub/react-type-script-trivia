@@ -7,7 +7,7 @@ import { QuestionState,Difficulty} from './API'
 
 //Styles
 
-import {GlobalStyles} from './App.styles';
+import {GlobalStyles, Wrapper} from './App.styles';
 
 
 const TOTAL_QUESTIONS = 10
@@ -54,7 +54,6 @@ const App = () => {
     if(!gameOver){
       // user Answers
       const answer = e.currentTarget.value;
-
       // check answer agains correct answer
       const correct = questions[number].correct_answer === answer; 
       // Add score if answer is correct
@@ -83,7 +82,7 @@ const App = () => {
   return(
     <>
     <GlobalStyles/>
-    <div className='App'>
+    <Wrapper>
       <h1>React Quiz</h1>
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
           <button className='start' onClick={startTrivia}>
@@ -112,7 +111,7 @@ const App = () => {
           Next Question
         </button>
       ): null}
-    </div>
+    </Wrapper>
     </>
   )
 }
