@@ -5,6 +5,9 @@ import QuestionCard from './components/QestionsCard';
 //TYPES
 import { QuestionState,Difficulty} from './API'
 
+//Styles
+
+import {GlobalStyles} from './App.styles';
 
 
 const TOTAL_QUESTIONS = 10
@@ -78,6 +81,8 @@ const App = () => {
   }
   
   return(
+    <>
+    <GlobalStyles/>
     <div className='App'>
       <h1>React Quiz</h1>
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
@@ -86,7 +91,7 @@ const App = () => {
         </button>
       ): null}
       
-      {!gameOver ? <p className='score'> Score:</p> : null}
+      {!gameOver ? <p className='score'> Score: {score}</p> : null}
       {loading && <p>Loading Questions..</p>}
       {/* //in any case you dont put the props this will dont will work, you need to put all props */}
       {!loading && !gameOver && <QuestionCard
@@ -108,6 +113,7 @@ const App = () => {
         </button>
       ): null}
     </div>
+    </>
   )
 }
 export default App;
