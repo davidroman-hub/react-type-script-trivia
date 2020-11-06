@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle } from 'styled-components';
-//@ts-ignore
 import Maiz from './img/maiz.jpg';
 
 export const GlobalStyles = createGlobalStyle`
