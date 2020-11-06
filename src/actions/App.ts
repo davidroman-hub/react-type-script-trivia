@@ -6,6 +6,7 @@ import {
   Question,
   ReduxAction,
 } from '../declarations';
+import { State } from '../reducers';
 import { shuffleArray } from '../utils';
 
 export const TOTAL_QUESTIONS = 10;
@@ -72,7 +73,7 @@ export const increaseScore = (): EmptyAction => ({
 
 export const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => async (
   dispatch: Dispatch,
-  getState: any,
+  getState: () => State,
 ): Promise<void> => {
   const { appReducer } = getState();
   const { gameOver, questions, number } = appReducer;
@@ -106,7 +107,7 @@ export const moveToNextQuestion = (): EmptyAction => ({
 
 export const nextQuestion = () => async (
   dispatch: Dispatch,
-  getState: any,
+  getState: () => State,
 ): Promise<void> => {
   const { appReducer } = getState();
   const { number } = appReducer;
