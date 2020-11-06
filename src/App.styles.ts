@@ -1,4 +1,4 @@
-import styled, {createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 //@ts-ignore
 import Maiz from './img/maiz.jpg';
 
@@ -23,7 +23,7 @@ export const GlobalStyles = createGlobalStyle`
         font-family: 'Catamaran',sans-serif;
     }
 
-`
+`;
 
 export const Wrapper = styled.div`
   display: flex;
@@ -52,7 +52,8 @@ export const Wrapper = styled.div`
     text-align: center;
     margin: 20px;
   }
-  .start, .next {
+  .start,
+  .next {
     cursor: pointer;
     background: linear-gradient(180deg, #ffffff, #ffcc91);
     border: 2px solid #d38558;
