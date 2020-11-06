@@ -1,4 +1,3 @@
-import { Action } from 'redux';
 import { AnswerObject, QuestionState, ReduxAction } from '../declarations';
 import {
   ADD_ANSWER,
