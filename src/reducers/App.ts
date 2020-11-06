@@ -33,8 +33,6 @@ export const reducer = (
   state: State = initialState,
   action: ReduxAction<string, unknown>,
 ): State => {
-  console.log(action.type);
-  console.log(action.payload);
   switch (action.type) {
     case FETCH_QUESTIONS_REQUEST:
       return { ...state, loading: true, gameOver: false };

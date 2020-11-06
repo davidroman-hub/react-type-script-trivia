@@ -11,20 +11,25 @@ import {
 } from './actions/App';
 
 import { GlobalStyles, Wrapper } from './App.styles';
+import { State } from './reducers';
 
-interface AppProps {
-  loading?: boolean;
-  questions?: QuestionState[];
-  number?: number;
-  userAnswers?: AnswerObject[];
-  score?: number;
-  gameOver?: boolean;
-  startGame?: (amount: number, difficulty: Difficulty) => void;
-  checkPlayerAnswer?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  nextAvailableQuestion?: () => void;
-}
+type StateProps = {
+  loading: boolean;
+  questions: QuestionState[];
+  number: number;
+  userAnswers: AnswerObject[];
+  score: number;
+  gameOver: boolean;
+};
+type DispatchProps = {
+  startGame: (amount: number, difficulty: Difficulty) => void;
+  checkPlayerAnswer: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  nextAvailableQuestion: () => void;
+};
+type OwnProps = any;
+type Props = StateProps & DispatchProps & OwnProps;
 
-const App: React.FunctionComponent<AppProps> = ({
+const App: React.FunctionComponent<Props> = ({
   loading,
   questions,
   number,
@@ -34,7 +39,7 @@ const App: React.FunctionComponent<AppProps> = ({
   startGame,
   checkPlayerAnswer,
   nextAvailableQuestion,
-}: AppProps) => (
+}: Props) => (
   <>
     <GlobalStyles />
     <Wrapper>
@@ -86,11 +91,11 @@ const App: React.FunctionComponent<AppProps> = ({
   </>
 );
 
-const mapStateToProps = (state: any, ownProps: AppProps) => {
+const mapStateToProps = (state: State, ownProps: OwnProps) => {
   return { ...ownProps, ...state.appReducer };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
   return {
     startGame: (amount: number, difficulty: Difficulty) =>
       dispatch(startTrivia(amount, difficulty) as any),
